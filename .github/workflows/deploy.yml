@@ -1,0 +1,22 @@
+name: Go to VPS
+
+on:
+  push:
+    branches:
+      - base #единственная ветка расположенная в моем гитхаб проекте ip-check
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # указание на чем провести тестирование до копирования файловв на сервер
+    steps:
+      - name: Check-mate
+        uses: actions/checkout@v3 # плагин, выбрать их можно на гитхаб и использовать при помощи манууалов к ним
+
+      - name: Drop with ssh
+        uses: appleboy/scp-action@master # тоже плагин, with и использование переменных указано в мануале к плагину 
+        with:
+          host: ${{ secrets.SERVER_IP }} # эти переменнные будут взяты с гитхаба, добаввил их я туда самостоятельно в разделе секьюрити энд квалилти
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_PRIVATE_KEY }}
+          source: "." # место откуда будут взяты файлы, точка ознначает текущую диррректорию 
+          target: "/var/www/ip-check" #место кудаа будут скопированы файлы 
