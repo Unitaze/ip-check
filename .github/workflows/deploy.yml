@@ -17,7 +17,8 @@ jobs:
         with:
           host: ${{ secrets.SERVER_IP }} # эти переменнные будут взяты с гитхаба, добаввил их я туда самостоятельно в разделе секьюрити энд квалилти
           username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SSH_PASS }}
+          #password: ${{ secrets.SSH_PASS }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "." # место откуда будут взяты файлы, точка ознначает текущую диррректорию 
           target: "/var/www/ip-check" #место кудаа будут скопированы файлы 
 
@@ -26,7 +27,8 @@ jobs:
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SSH_PASS }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          #password: ${{ secrets.SSH_PASS }}
           script: |
             cd /var/www/ip-check
             mkdir this_shit_works
