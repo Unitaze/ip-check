@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest # указание на чем провести тестирование до копирования файловв на сервер
     steps:
       - name: Check-mate
-        uses: actions/checkout@v3 # плагин, выбрать их можно на гитхаб и использовать при помощи манууалов к ним
+        uses: actions/checkout@v4 # плагин, выбрать их можно на гитхаб и использовать при помощи манууалов к ним
 
       - name: Drop with ssh
         uses: appleboy/scp-action@master # тоже плагин, with и использование переменных указано в мануале к плагину 
