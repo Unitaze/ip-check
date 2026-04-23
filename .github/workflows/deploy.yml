@@ -22,7 +22,7 @@ jobs:
           target: "/var/www/ip-check" #место кудаа будут скопированы файлы 
 
       - name: Cool commands with my server
-        uses: appleboy/scp-action@master
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
